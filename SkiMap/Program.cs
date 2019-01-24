@@ -10,6 +10,7 @@ namespace SkiMap
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
