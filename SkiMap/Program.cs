@@ -16,33 +16,46 @@ namespace SkiMap
         {
             //-----------------------------------------------------------------------------------
 
-            string _val1 = "";
-            Console.Write("Please enter the Matrix's size: ");
-            EnterValues(ref _val1);
+            //If you want to insert program parameters randomly
 
-            string _val2 = "";
-            Console.Write("Please enter the Matrix's biggest number : "); 
-            EnterValues(ref _val2);
+            //int dim;
+            //int biggerNum;
+            //int[,] table;
+            //InsertProgramParameters(out dim, out biggerNum, out table);
+            //int[,] fillTable = FillArray(table, dim, biggerNum);
 
-
-            int dim = Convert.ToInt32(_val1);
-            int biggerNum = Convert.ToInt32(_val2);
-
-            int[,] table = new int[dim, dim];
             //--------------------------------------------------------------------------------------------------------------------
 
+
+            //Test arrays
             //int[,] fillTable = new int[,] { { 9, 5, 7 }, { 7, 2, 5 }, { 6, 3, 1 } };
-            //int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, {4, 4, 1, 6} };
-            //Prueba
-            //int dim = table.GetLength(0);
+            int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, { 4, 4, 1, 6 } };
+            int dim = fillTable.GetLength(0);
 
             //Real
-            int[,] fillTable = FillArray(table, dim, biggerNum);
+            
 
 
 
             FindCloseNumbers(fillTable, dim, null, new List<PositionEntity>());
 
+        }
+
+        unsafe private static void InsertProgramParameters(out int dim, out int biggerNum, out int[,] table)
+        {
+            string _val1 = "";
+            Console.Write("Please enter the Matrix's size: ");
+            EnterValues(ref _val1);
+
+            string _val2 = "";
+            Console.Write("Please enter the Matrix's biggest number : ");
+            EnterValues(ref _val2);
+
+
+            dim = Convert.ToInt32(_val1);
+            biggerNum = Convert.ToInt32(_val2);
+
+            table = new int[dim, dim];
         }
 
         unsafe private static void EnterValues(ref string _val)
