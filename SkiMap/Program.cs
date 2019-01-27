@@ -6,36 +6,29 @@ using System.Text;
 using System.Threading.Tasks;
 
 enum Position { North, South, East, West };
-
+//int[,] fillTable = new int[,] { { 9, 5, 7 }, { 7, 2, 5 }, { 6, 3, 1 } };
 namespace SkiMap
 {
     public class Program
     {
-        int height = 0;
         static unsafe void Main(string[] args)
         {
             //-----------------------------------------------------------------------------------
 
             //If you want to insert program parameters randomly
 
-            //int dim;
-            //int biggerNum;
-            //int[,] table;
-            //InsertProgramParameters(out dim, out biggerNum, out table);
-            //int[,] fillTable = FillArray(table, dim, biggerNum);
+            int dim;
+            int biggerNum;
+            int[,] table;
+            InsertProgramParameters(out dim, out biggerNum, out table);
+            int[,] fillTable = FillArray(table, dim, biggerNum);
 
             //--------------------------------------------------------------------------------------------------------------------
 
 
             //Test arrays
-            //int[,] fillTable = new int[,] { { 9, 5, 7 }, { 7, 2, 5 }, { 6, 3, 1 } };
-            int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, { 4, 4, 1, 6 } };
-            int dim = fillTable.GetLength(0);
-
-            //Real
-            
-
-
+            //int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, { 4, 4, 1, 6 } };
+            //int dim = fillTable.GetLength(0);
 
             FindCloseNumbers(fillTable, dim, null, new List<PositionEntity>());
 
@@ -110,8 +103,6 @@ namespace SkiMap
                         //Tiene que llamar a la misma funcion
                         FindCloseNumbers(fillTable, dim, root, position);
                         
-
-                        //////////////////////////////////Aqui voy no funciona bien obtener la altura del arbol
                         CTree treeProperty = new CTree();
                         treeProperty.Height = tree.FindMaxLevelTree(root);
                         treeProperty.Steeper = tree.FindSteeperTree(root);
@@ -287,8 +278,9 @@ namespace SkiMap
             var queue = new Queue(Enumerable.Range(0, dim * dim).ToList<int>());
             var rng = new Random();
 
-
             int x = dim / 2, y = dim / 2;
+
+            Console.Write("\r\n----------------------------MATRIX-------------------------------\r\n");
 
             for (int i = 0; i < dim; i++)
             {
@@ -299,6 +291,7 @@ namespace SkiMap
                 }
                 Console.Write("\n", Environment.NewLine);
             }
+            Console.Write("\r\n\r\n\r\n");
             return table;
         }
     }
