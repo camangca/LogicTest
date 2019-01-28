@@ -28,7 +28,10 @@ namespace SkiMap
 
             //Test arrays
             //int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, { 4, 4, 1, 6 } };
+            
             //int dim = fillTable.GetLength(0);
+
+            WriteText(fillTable);
 
             FindCloseNumbers(fillTable, dim, null, new List<PositionEntity>());
 
@@ -274,13 +277,14 @@ namespace SkiMap
 
         private static int[,] FillArray(int[,] table, int dim, int biggerDim)
         {
+            
             // 100 integers: 0..99
             var queue = new Queue(Enumerable.Range(0, dim * dim).ToList<int>());
             var rng = new Random();
 
             int x = dim / 2, y = dim / 2;
 
-            Console.Write("\r\n----------------------------MATRIX-------------------------------\r\n");
+            Console.Write("\r\n----------------------------ARRAY-------------------------------\r\n");
 
             for (int i = 0; i < dim; i++)
             {
@@ -293,6 +297,23 @@ namespace SkiMap
             }
             Console.Write("\r\n\r\n\r\n");
             return table;
+        }
+
+        private static void WriteText(int[,] array)
+        {
+
+            string path = Environment.CurrentDirectory;
+
+            List<string> linesToWrite = new List<string>();
+            for (int i = 0; i < array.GetLength(0) ; i++)
+            {
+                StringBuilder line = new StringBuilder();
+                for (int j = 0; j < array.GetLength(0); j++)
+                    line.Append(array[i, j]).Append(" ");
+                linesToWrite.Add(line.ToString());
+            }
+            System.IO.File.WriteAllLines(path + "\\Array.txt", linesToWrite.ToArray());
+            
         }
     }
 }
