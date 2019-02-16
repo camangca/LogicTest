@@ -17,21 +17,21 @@ namespace SkiMap
 
             //If you want to insert program parameters randomly
 
-            int dim;
-            int biggerNum;
-            int[,] table;
-            InsertProgramParameters(out dim, out biggerNum, out table);
-            int[,] fillTable = FillArray(table, dim, biggerNum);
+            //int dim;
+            //int biggerNum;
+            //int[,] table;
+            //InsertProgramParameters(out dim, out biggerNum, out table);
+            //int[,] fillTable = FillScreenArray(table, dim, biggerNum);
 
             //--------------------------------------------------------------------------------------------------------------------
 
 
             //Test arrays
-            //int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, { 4, 4, 1, 6 } };
+            int[,] fillTable = new int[,] { { 4, 8, 7, 3 }, { 2, 5, 9, 3 }, { 6, 3, 2, 5 }, { 4, 4, 1, 6 } };
             
-            //int dim = fillTable.GetLength(0);
-
-            WriteText(fillTable);
+            int dim = fillTable.GetLength(0);
+            //FillScreenArray(fillTable, dim, 9);
+            //WriteText(fillTable);
 
             FindCloseNumbers(fillTable, dim, null, new List<PositionEntity>());
 
@@ -113,6 +113,8 @@ namespace SkiMap
 
                         treesProperty.Add(treeProperty);
 
+                        Console.Write("Tree: ");
+                        Console.Write("\r\n");
                         tree.TransversaPreO(root);
                     }
                     else
@@ -275,7 +277,7 @@ namespace SkiMap
             
         }
 
-        private static int[,] FillArray(int[,] table, int dim, int biggerDim)
+        private static int[,] FillScreenArray(int[,] table, int dim, int biggerDim)
         {
             
             // 100 integers: 0..99
